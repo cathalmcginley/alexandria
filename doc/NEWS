@@ -1,0 +1,341 @@
+================
+Alexandria
+================
+
+New features:
+ * added the FAQ
+ * Now EAN/ISBN-13 is used
+ * New providers: webster.it, deastore.com, worldcat.org, bol.it. 
+   "Servizio Bibliotecario Nazionale (Italy)"
+ * provider amadeus renamed to thalia (Amadeus was bought by Thalia)
+ * Now thalia supports also music, DVD, software, games
+ * added the country of the provider after the name
+ * the requirement Ruby/Amazon is now optional
+ * added info in case that Alexandria can't load optional libraries
+ * added hotkey "<control>O" for preferences
+ * in the "Book Properties Dialog", added "cancel" button, and renamed 
+   "close" button to "save"
+ * added date when exporting to HTML or BibTeX
+ * added image size when exporting to HTML or Tellico
+ * improved export to ONIX, Tellico, CSV, HTML, BibTeX
+ * improved import from Tellico or ISBN list
+ * improved and refactored the code for Z39.50 providers
+
+Bugs fixed:
+ * several fixes and updates for various providers
+ * converted the encoding from UTF-8, when searching by title/author/keyword
+ * converted the output from the provider to UTF-8
+ * used CGI::unescapeHTML for renaud and thalia
+ * now nul is returned instead of "", "n/a", or "Unknown Binding", when 
+   the provider doesn't return a value
+ * allowed manual entry of books without author
+ * improved error and debug messages
+
+Added translation:
+
+Updated translations:
+* revision of the Italian translation
+
+================
+Alexandria 0.6.0
+================
+
+New features:
+ * Z39.50 support, with the possibility to manage your own sources ;
+ * New book information providers: Internet Bookshop Italia, US Library of 
+   Congress and British Library ;
+ * Complete manual (in English only), available either from the GNOME help
+   application and Alexandria itself (via Help buttons) ;
+ * Autocompletion is available in all fields of the Add Manually Book and
+   Book Properties dialogs ;
+ * Add a heart emblem to covers of books that have a 5 rating ;
+ * Support for American UPC barcodes ;
+ * Display covers in the search results of the Add Book dialog ;
+ * Added a 'Match everything' filtering option ;
+ * New icons ; 
+ * More ONIX compliance. 
+
+Bugs fixed:
+ * Loading the model is now a bit faster ;
+ * Fixed a Proxis bug that was returning all editions of a book from an ISBN
+   search ;
+ * Labels in alert dialogs are now selectable ;
+ * Improved the wording of the status bar text ;
+ * Ignore CVS directories when looking for themes ;
+ * Ignore whitespace characters when extracting numbers for ISBN/EAN/... ;
+ * In the HTML export, create the directory if it does not exist yet ;
+ * In the ONIX export, do not write ProductWebsite elements for providers
+   that return nil URLs ;
+ * Handle low-case 'x' when validating ISBN/EAN/... ;
+ * In the ISBN-list text file import, iterate on the progress bar when 
+   downloading covers ;
+ * In the ISBN-list text file import, start importing if there is at least one
+   valid ISBN in the file ;
+ * Added a backward compatibility hack to upgrade the old developer token
+   to a new valid one ;
+ * Resize all icons in the icon view to have the same height (and not the same 
+   width as before) ;
+ * Handle GConf default values by ourself when the GConf client returns nil
+   values, this should fix all issues related to the installation of GConf 
+   schemas ;
+ * Disable the 'View Online Information' actions if the according providers
+   do not provide a URL for the selected book.
+
+Added translations:
+ * Jiri Pejchal <jiri.pejchal@gmail.com> (cs) ;
+ * Ligia Moreira <ligia.moreira@netvisao.pt> (pt) ;
+ * Lucas Rocha <lucasr@im.ufba.br> (pt_BR). 
+ 
+Updated translations:
+ * David Weinehall <tao@debian.org> (sv) ;
+ * Joachim Breitner <mail@joachim-breitner.de> (de) ;
+ * Laurent Sansonetti <lrz@gnome.org> (fr) ;
+ * Masao Mutoh <mutoh@highway.ne.jp> (ja) ;
+ * Miguel Ángel García (es) ;
+ * Mirko Maischberger <mirko@lilik.it> (it). 
+
+================
+Alexandria 0.5.1
+================
+
+New features:
+ * Added provider for book information retrieval of the Amadeus Buch online
+   library (Austrian books) ;
+ * Allows user-specific themes in ~/.alexandria/.web-themes ;
+ * Localized .desktop file.
+
+Bugs fixed:
+ * Fixed the wording of some messages ;
+ * Use alternating colours for rows in the search list of the Add Book dialog
+   and the providers list of the Preferences dialog ;
+ * The Amazon provider will cache information on ~/.alexandria/.amazon_cache
+   instead of /tmp/amazon, allowing multiple users with different credentials
+   to use it ;
+ * Really ignores hidden directories in ~/.alexandria ;
+ * Be more intelligent when building the list of providers by taking into 
+   account nil values from the GConf schema ;
+ * Do not display the whole GPL text in the About dialog, just the header ;
+ * Display an confirmation message when trying to move a book into a library 
+   that already has a book with the same ident ;
+ * Fixed the moves action after an import process ;
+ * Display an error message when trying to set an EAN/ISBN that is already
+   used by another book in the same library ;
+ * Forgot to mark some translatable strings ;
+ * Display an error message when trying to add a book with an EAN/ISBN that is 
+   already used by another book in the same library ;
+ * Manually added books were not automatically added in the memory 
+   representation of the library ;
+ * Pack the cover image as non-expandable in the books list view.
+
+Added translation:
+ * Mirko Maischberger <mirko@lilik.it> (it).
+
+Updated translations:
+ * Dafydd Harries <daf@muse.19inch.net> (cy) ;
+ * David Weinehall <tao@debian.org> (sv) ;
+ * Joachim Breitner <mail@joachim-breitner.de> (de) ;
+ * Laurent Sansonetti <lrz@gnome.org> (fr) ;
+ * Masao Mutoh <mutoh@highway.ne.jp> (ja) ;
+ * Miguel Ángel García (es).
+
+================
+Alexandria 0.5.0
+================
+
+New features:
+ * XHTML export with CSS themes ;
+ * Added provider for book information retrieval of the Spanish Ministry of 
+   Culture ;
+ * Loaning support (very basic though), actually possible to mark a book
+   as loaned and specify a person name and a date ;
+ * Possibility to manually add ISBN-less books ;
+ * The ISBN-list import supports EAN ;
+ * The Amazon provider supports the French and Canadian web-services (via 
+   Ruby/Amazon 0.9.0) ;
+ * Improved the usability of the main, import and export dialogs ;
+ * Performances and memory usage have been improved ;
+ * Migration to new GTK+ 2.6 widgets.
+
+Bugs fixed:
+ * Migrated any reference to Bookcase in the Tellico import/export ;
+ * Fixed a bug where importing an ISBN list file would cause a crash when an 
+   ISBN in the list did not have a cover image ;
+ * In the providers preferences dialog, disable the Setup button if the 
+   selected provider does not have any preferences to setup, instead of 
+   displaying a dialog ;
+ * Catches the SocketError exception when calling providers, and returns an 
+   appropriate message ;
+ * When deleting more than one books, display a single alert dialog instead
+   of an alert dialog for each book ;
+ * Added the possibility to reset the rating in the book properties dialog ;
+ * Fixed a bug  where EAN numbers with a checksum of 10 were incorrectly marked 
+   as invalid ;
+ * Fixed BN.com query regexes ;
+ * Fixed a bug when a book returned by a search by title/authors/keyword
+   contains an invalid ISBN, propose the user to either add the book with a
+   blank ISBN or cancel the add) ;
+ * Added workaround for an Amazon US encoding bug ;
+ * Setup the Amazon online information URL according to the selected locale ;
+ * Filtering text field is more robust ;
+ * Make sure we do not select a library before having setup the moves action 
+   at the beginning ;
+ * Fixed the wording of some messages.
+
+Added translation:
+ * David Weinehall (sv).
+
+Updated translations:
+ * Joachim Breitner (de) ;
+ * Laurent Sansonetti (fr) ;
+ * Masao Mutoh (ja) ;
+ * Miguel Ángel García (es).
+
+================
+Alexandria 0.4.0
+================
+
+New features:
+ * export libraries into ONIX, Tellico and ISBN-list formats ;
+ * import libraries from Tellico and ISBN-list formats ;
+ * a provider to the Barnes and Noble (bn.com) library has been added ;
+ * CueCat (R) barcode support ;
+ * manual addition of books ;
+ * allow the edition of all fields of the properties of a book (including cover 
+   change) ;
+ * move books between libraries ;
+ * display online information (amazon, proxis, bn) for a book ;
+ * improved the usability of the Add Book dialog (the ISBN text entry grabs the
+   focus at the beginning, the criterion is automatically selected upon clicks
+   on insensitive widgets, the edition and publisher are appended in the search
+   result list for books that have the same title and authors) ;
+ * migration to the new GTK UI manager and file selector widgets. 
+
+Bugs fixed: 
+ * modified the ISBN text entry to allow 18 characters (extended EAN) 
+   instead of 13 ;
+ * bin/alexandria is now automatically generated by the installer, this
+   fixes a bug in the #! line (/usr/bin/env could not pass a parameter to 
+   Ruby) ;
+ * squeezed extra space characters in the data given by Amazon ;
+ * fixed the ISBN validation code for numbers that end with an X ;
+ * recorded the maximize state of the main window in GConf ;
+ * fixed the default rating to 0 instead of 3 (0 means unrated) ; 
+ * erases the 'http_proxy' environment variable if its content is invalid ;
+ * show an error message when trying to rename a library to an empty name, or 
+   to a name that is already used by another library.
+
+Added translations:
+ * Joachim Breitner (de) ;
+ * Miguel Angel Garcia (es).
+
+No translation update in this release due to a Ruby-GetText problem.
+
+================
+Alexandria 0.3.1
+================
+
+Bugs fixed:
+ * removed custom sorting functions as they appear not to make anything
+   work better and may actually cause some problems ; 
+ * fixed the Amazon provider to perform another lookup using the next 
+   locale if the previous one gives no results ;
+ * improved exception handing to have better error messages ;  
+ * calling providers one after one until at least one book has been found ;
+ * sorting by rating books that were not rated yet did crash ; 
+ * sorting by edition and publisher were reversed ;
+ * the Add Book dialog is now resizable in search mode ;
+ * removing a book without a cover image did crash. 
+
+Updated translations:
+ * Dafydd Harries (cy) ;
+ * Laurent Sansonetti (fr) ;
+ * Masao Mutoh (ja). 
+
+================
+Alexandria 0.3.0
+================
+
+New features:
+ * the Add Book dialog allows searches by title, authors and keyword as well  
+   as regular ISBNs ;
+ * ISBNs are now validated before usage ;
+ * the Add Book dialog will autofill the ISBN text entry using the clipboard
+   content if it contains a valid EAN/ISBN ; 
+ * the Add Book dialog will automatically convert EANs to ISBNs ;
+ * a provider to the Proxis library (http://www.proxis.be) has been added ;
+ * HTTP connections to Amazon and Proxis are configured to pass via a proxy
+   or not according to the GNOME preferences.
+
+Bugs fixed:
+ * do not split title icons inside a multibyte character ;
+ * fixed the Amazon provider to not set the manufacturer attribute to nil
+   for some books that are not yet released ; 
+ * enforced the use of UTF-8 for gettext ;
+ * some strings have been ngettexted ;
+ * the data/locale directory is cleaned by install.rb ;
+ * pre-setup.rb doesn't require Ruby-GetText anymore since all this does
+   is run msgfmt. 
+
+Updated translations:
+ * Dafydd Harries (cy) ;
+ * Laurent Sansonetti (fr) ;
+ * Masao Mutoh (ja). 
+
+================
+Alexandria 0.2.0
+================
+
+New features:
+ * full i18n support ;
+ * a preferences dialog has been created, to configure the application and
+   the providers ; 
+ * preferences are saved and restored using a GConf backend ;
+ * notes can be associated with books ;
+ * books can be rated ;
+ * books icons can be sorted ;
+ * the user interface has been improved to be more usable and accessible. 
+
+Bugs fixed:
+ * fixed some UTF-8 encoding problems in data from Amazon ;
+ * allow "-" characters in ISBNs ;  
+ * allow more characters in library names ;
+ * display a default cover icon for a book which cover is not available ;
+ * the treeview is now sortable with UTF-8 data ; 
+ * the 'clicked' signal is used instead of 'pressed' for Gtk::Button widgets ; 
+ * when the current selected library is renamed the title of the application
+   is accordingly renamed.
+ * a lot of code has been refactored.
+
+Added translations:
+ * Dafydd Harries (cy) ;
+ * Laurent Sansonetti (fr) ;
+ * Masao Mutoh (ja). 
+
+================
+Alexandria 0.1.2
+================
+
+Bugs fixed:
+  * did not work with the latest version or Ruby/Amazon (0.8.1) ;
+  * crash when Amazon doesn't provide the author(s) for a book.
+
+New feature:
+ * default to the currently selected library in the Add Book Dialog
+   (contributed by Zachary P. Landau).
+
+================
+Alexandria 0.1.1
+================
+
+This release fixes a bug when Alexandria fails to start if
+the directory ~/.alexandria doesn't exist.
+
+================
+Alexandria 0.1.0
+================
+
+This is the first public release, which:
+  * retrieves book information from Amazon (including cover pictures) ;
+  * saves data using the YAML format ;
+  * features an HIG-compliant user interface ;
+  * shows books in different views (standard list or icons list).
