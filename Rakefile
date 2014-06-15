@@ -32,7 +32,11 @@ rescue LoadError
 end
 
 require 'rake/clean'
-require 'rake/rdoctask'
+begin
+  require 'rake/task'
+rescue LoadError
+  require 'rake/tasklib'
+end
 require 'rake/packagetask'
 
 $:.unshift(File.join(File.dirname(__FILE__), 'util/rake'))
@@ -50,8 +54,8 @@ share_dir = ENV['SHARE'] || "#{PREFIX}/share"
 SHARE = share_dir
 
 DATA_VERSION = '0.6.3'
-PROJECT_VERSION = '0.6.8'
-DISPLAY_VERSION = '0.6.8'
+PROJECT_VERSION = '0.6.9'
+DISPLAY_VERSION = '0.6.9'
 
 
 # Write a .config file if the configuration data has changed

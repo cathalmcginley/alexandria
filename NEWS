@@ -1,4 +1,4 @@
-Announcing the release of Alexandria 0.6.8
+Announcing the release of Alexandria 0.6.9
 
 * What is Alexandria?
 =====================
@@ -29,13 +29,19 @@ Alexandria is written in Ruby using ruby-gnome2.
   providing the patch.
 
 
-* What's New in 0.6.8?
+* What Was New in 0.6.8?
 ======================
 
 - Removed dependencies on deprecated Ruby/GNOME2 libraries, to get
   Alexandria working on Ubuntu 11.10.
 - Added dependencies on ruby-gst and ruby-goocanvas
 - Added Barcode Scanner tab to Preferences dialog
+
+* What's New in 0.6.9?
+======================
+
+- Fixed #29479 which caused a crash every time a book was added.
+  Thanks to Tomoh K for providing the patch.
 
 Where can I find out more?
 ==========================
